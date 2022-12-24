@@ -3,8 +3,21 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar{
+  @apply w-2 bg-slate-300;
+}
+::-webkit-scrollbar-thumb{
+  @apply bg-rose-500;
+}
+
 @layer components {
   .container {
     @apply max-w-7xl mx-auto px-3;
+  }
+  #__next{
+    @apply min-h-screen flex flex-col;
+  }
+  #__next main{
+    @apply flex-grow;
   }
 }

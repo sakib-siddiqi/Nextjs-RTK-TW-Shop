@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FaOpencart } from "react-icons/fa";
 
 const Banner = () => {
   return (
-    <section className="bg-pink-200">
+    <section className="bg-pink-200 pt-16">
       <div className="container py-10 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <div className="lg:col-span-2 order-2 md:order-1">
           <h1 className="text-7xl text-pink-900  font-cinzel font-bold tracking-wider mb-5">
@@ -16,9 +17,9 @@ const Banner = () => {
             ipsum?
           </p>
           <div className="flex gap-4">
-            <button className="btn btn-secondary">
+            <Link href={"/shop"} className="btn btn-secondary">
               Shop Now  <FaOpencart className="ml-3 h-8 w-6" />
-            </button>
+            </Link>
           </div>
         </div>
         <Image

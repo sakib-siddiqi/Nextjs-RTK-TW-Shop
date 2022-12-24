@@ -21,8 +21,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({data,error,url:api_route}) {
-  console.log(api_route);
+export default function Home({data,error}) {
   return (
     <>
       <Head>
