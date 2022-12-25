@@ -26,7 +26,6 @@ function CartCart({ product }) {
       });
   }, [product?.product_id]);
   if (loading) return <p className="text-slate-300 font-mono">Loading...</p>;
-  console.log(data);
   return (
     <div className="grid grid-cols-12 gap-2 mb-3 border-2 border-slate-100  bg-slate-50 overflow-hidden">
       <figure className="col-span-3">
@@ -40,7 +39,7 @@ function CartCart({ product }) {
       </figure>
       <div className="col-span-7 relative">
         <span className="inline-grid place-items-center absolute top-1/2 left-0 -translate-y-1/2 -translate-x-[120%] h-8 w-8 rounded-full ring-1 ring-offset-2 bg-indigo-500 text-indigo-50 ">
-          {product.count}
+          {product?.count}
         </span>
         <h2 className="text-md">{data?.title}</h2>
       </div>

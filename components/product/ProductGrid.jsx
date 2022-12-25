@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FaCartArrowDown } from "react-icons/fa";
 import { MdOutlineOpenWith } from "react-icons/md";
 import { useDispatch } from "react-redux";
@@ -32,9 +33,18 @@ export function ProductCard({ product = {} }) {
         >
           <FaCartArrowDown className="-ml-1" />
         </button>
-        <button className="bg-gradient-to-b from-rose-500 to-rose-700 active:from-rose-700 active:to-rose-900 text-white pl-3 p-2 h-auto min-h-[auto] rounded-full ring-2 ring-offset-2 ring-rose-300">
+        <Link
+          href={`/shop/${product?._id}`}
+          className="bg-gradient-to-b from-rose-500 to-rose-700 active:from-rose-700 active:to-rose-900 text-white pl-3 p-2 h-auto min-h-[auto] rounded-full ring-2 ring-offset-2 ring-rose-300"
+        >
           <MdOutlineOpenWith className="-ml-1" />
-        </button>
+        </Link>
+          <Link
+            href={`/products/${product?._id}`}
+            className="bg-gradient-to-b from-rose-500 to-rose-700 active:from-rose-700 active:to-rose-900 text-white pl-3 p-2  min-h-[auto] rounded-full ring-2 ring-offset-2 ring-rose-300"
+          >
+            <MdOutlineOpenWith className="-ml-1" />
+          </Link>
       </div>
     </figure>
   );

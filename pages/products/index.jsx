@@ -3,7 +3,7 @@ import React from "react";
 import ProductGrid from "../../components/product/ProductGrid";
 import { BASE_API_ROUTE } from "../../const";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   let URL = `${BASE_API_ROUTE}/api/v1/products`;
   let props = { data: [], error: "", url: URL };
   try {
