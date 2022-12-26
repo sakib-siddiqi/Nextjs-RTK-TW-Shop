@@ -7,6 +7,7 @@ let URL =
 
 const connectDB = async () => {
   // Use new db connection
+  console.log(URL)
   return mongoose.connect(URL);
 };
 

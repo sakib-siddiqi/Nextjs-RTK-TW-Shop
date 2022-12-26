@@ -5,9 +5,9 @@ import { BASE_API_ROUTE } from "../const";
 
 export async function getStaticProps() {
   let URL = `${BASE_API_ROUTE}/api/v1/products`;
-  let props = {data:[],error:'',url:URL};
+  let props = { data: [], error: "", url: URL };
   try {
-    let data= await (await fetch(URL)).json();
+    let data = await (await fetch(URL)).json();
     props.data = data;
     props.error = null;
   } catch (error) {
@@ -21,6 +21,10 @@ export async function getStaticProps() {
 }
 
 export default function Home({ data = [], error = "" }) {
+  if (error)
+    return (
+      <h1 className="text-4xl font-bold font-mono text-rose-800">{error}</h1>
+    );
   return (
     <>
       <Head>
