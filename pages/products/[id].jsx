@@ -2,7 +2,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
-import { BASE_API_ROUTE } from "../../const";
+import { BASE_API_ROUTE } from "../const";
 
 export async function getServerSideProps(context) {
   const id = context?.params?.id;

@@ -1,6 +1,6 @@
 import CART_SLICE, {
-    add_to_cart,
-    update_cart_next_position
+  add_to_cart,
+  update_cart_next_position
 } from "../slices/cart.slice";
 
 export const cart_position = (store) => (next) => (action) => {
@@ -10,7 +10,6 @@ export const cart_position = (store) => (next) => (action) => {
     const from_prev_cart = previous_cart.find(
       (item) => item.product_id === action?.payload?._id
     );
-    console.log(from_prev_cart);
     const data = {
       ...action.payload,
       position: from_prev_cart?.position || current_position,

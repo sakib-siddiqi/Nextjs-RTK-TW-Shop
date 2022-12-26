@@ -3,8 +3,8 @@ import Image from "next/image";
 import React from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { BASE_API_ROUTE } from "../../const";
-import { add_to_cart } from "../../redux/slices/cart.slice";
+import { BASE_API_ROUTE } from "../const";
+import { add_to_cart } from "../redux/slices/cart.slice";
 
 // export async function getServerSideProps(context) {
 //   const id = context?.params?.id;

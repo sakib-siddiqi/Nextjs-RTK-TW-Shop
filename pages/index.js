@@ -1,27 +1,26 @@
-import axios from "axios";
 import Head from "next/head";
 import Banner from "../components/Home/Banner";
 import ProductGrid from "../components/product/ProductGrid";
 import { BASE_API_ROUTE } from "../const";
 
+// export async function getStaticProps() {
+//   let URL = `${BASE_API_ROUTE}/api/v1/products`;
+//   let props = {data:[],error:'',url:URL};
+//   try {
+//     let data= await (await fetch(URL)).json();
+//     props.data = data;
+//     props.error = null;
+//   } catch (error) {
+//     props.data = [];
+//     console.error(error);
+//     props.error = error.message;
+//   }
+//   return {
+//     props: props, // will be passed to the page component as props
+//   };
+// }
 
-export async function getStaticProps() {
-  let URL = `${BASE_API_ROUTE}/api/v1/products`;
-  let props = {data:[],error:'',url:URL};
-  try {
-    let {data}= await axios(URL);
-    props.data = data;
-    props.error = null;
-  } catch (error) {
-    props.data = [];
-    props.error = error.message;
-  }
-  return {
-    props: props, // will be passed to the page component as props
-  };
-}
-
-export default function Home({data,error}) {
+export default function Home({ data = [], error = "" }) {
   return (
     <>
       <Head>
@@ -36,13 +35,9 @@ export default function Home({data,error}) {
         <section className="py-16 bg-white">
           <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] gap-5 items-center">
             <hr className="border-0 h-1 bg-gradient-to-l from-pink-300" />
-            <h1 className="text-3xl font-bold font-cinzel">
-              Featured
-            </h1>
+            <h1 className="text-3xl font-bold font-cinzel">Featured</h1>
             <hr className="border-0 h-1 bg-gradient-to-l to-purple-400 from-pink-400 rounded-full" />
-            <h1 className="text-3xl font-bold font-cinzel">
-              Products
-            </h1>
+            <h1 className="text-3xl font-bold font-cinzel">Products</h1>
             <hr className="border-0 h-1 bg-gradient-to-r from-pink-300" />
           </div>
           <ProductGrid className="py-5" products={data} error={error} />

@@ -1,5 +1,5 @@
 import Products from "../../../../model/products.model";
-import db_connector from "../../../_db_connect";
+import db_connector from "../../pages/_db_connect";
 
 /**
  *
