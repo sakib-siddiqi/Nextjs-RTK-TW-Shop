@@ -7,10 +7,7 @@ let URL =
 
 const connectDB = async () => {
   // Use new db connection
-  return mongoose.connect(URL, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-  });
+  return mongoose.connect(URL);
 };
 
 export default connectDB;
