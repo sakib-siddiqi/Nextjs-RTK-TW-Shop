@@ -1,5 +1,5 @@
+import connectDB from "../../../../middleware/connectDB";
 import Products from "../../../../model/products.model";
-import db_connector from "../../pages/_db_connect";
 
 /**
  *
@@ -9,7 +9,7 @@ import db_connector from "../../pages/_db_connect";
  */
 export default async function handler(req, res) {
   try {
-    await db_connector();
+    await connectDB();
     const result = await Products.findById(req?.query?.id);
     return res.status(200).send(result);
   } catch (error) {

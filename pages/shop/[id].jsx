@@ -1,16 +1,27 @@
-import axios from "axios";
 import Image from "next/image";
 import React from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { BASE_API_ROUTE } from "../const";
-import { add_to_cart } from "../redux/slices/cart.slice";
+import { add_to_cart } from "../../redux/slices/cart.slice";
 
-// export async function getServerSideProps(context) {
-//   const id = context?.params?.id;
-//   if (!id) {
-//     throw new Error(`ID is invalid ${id}`);
+// export async function getStaticPaths() {
+//   const URL = `${BASE_API_ROUTE}/api/v1/products`;
+//   try {
+//     const { data } = await axios.get(URL);
+//     return {
+//       paths: data.map((ele) => ({ params: { id: ele._id } })),
+//       fallback: true, // can also be true or 'blocking'
+//     };
+//   } catch (error) {
+//     return {
+//       notFound: true,
+//       fallback: true,
+//     };
 //   }
+// }
+
+// export async function getStaticProps(context) {
+//   const id = context.params.id;
 //   const URL = `${BASE_API_ROUTE}/api/v1/products/${id}`;
 //   try {
 //     const { data } = await axios.get(URL);
@@ -22,36 +33,7 @@ import { add_to_cart } from "../redux/slices/cart.slice";
 //   }
 // }
 
-export async function getStaticPaths() {
-  const URL = `${BASE_API_ROUTE}/api/v1/products`;
-  try {
-    const { data } = await axios.get(URL);
-    return {
-      paths: data.map((ele) => ({ params: { id: ele._id } })),
-      fallback: true, // can also be true or 'blocking'
-    };
-  } catch (error) {
-    return {
-      notFound: true,
-      fallback: true,
-    };
-  }
-}
-
-export async function getStaticProps(context) {
-  const id = context.params.id;
-  const URL = `${BASE_API_ROUTE}/api/v1/products/${id}`;
-  try {
-    const { data } = await axios.get(URL);
-    return { props: { data } };
-  } catch (error) {
-    return {
-      notFound: true,
-    };
-  }
-}
-
-const SingleProduct = ({ data }) => {
+const SingleProduct = ({ data={} }) => {
     const dispatch=useDispatch();
     function on_add_to_cart(){
         dispatch(add_to_cart(data))
