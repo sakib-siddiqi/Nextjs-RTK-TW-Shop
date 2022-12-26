@@ -9,8 +9,6 @@ const connectDB = async () => {
   // Use new db connection
   return mongoose.connect(URL, {
     useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
     useNewUrlParser: true,
   });
 };
