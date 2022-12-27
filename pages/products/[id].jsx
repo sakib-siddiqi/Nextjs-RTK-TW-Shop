@@ -1,22 +1,24 @@
+import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
+import { BASE_API_ROUTE } from "../../const";
 
-// export async function getServerSideProps(context) {
-//   const id = context?.params?.id;
-//   if (!id) {
-//     throw new Error(`ID is invalid ${id}`);
-//   }
-//   const URL = `${BASE_API_ROUTE}/api/v1/products/${id}`;
-//   try {
-//     const { data } = await axios.get(URL);
-//     return { props: { data } };
-//   } catch (error) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-// }
+export async function getServerSideProps(context) {
+  const id = context?.params?.id;
+  if (!id) {
+    throw new Error(`ID is invalid ${id}`);
+  }
+  const URL = `${BASE_API_ROUTE}/api/v1/products/${id}`;
+  try {
+    const { data } = await axios.get(URL);
+    return { props: { data } };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
+}
 
 const SingleProduct = ({ data={} }) => {
   const {

@@ -1,21 +1,23 @@
+import axios from "axios";
 import React from "react";
 import ProductGrid from "../../components/product/ProductGrid";
+import { BASE_API_ROUTE } from "../../const";
 
-// export async function getStaticProps() {
-//   let URL = `${BASE_API_ROUTE}/api/v1/products`;
-//   let props = { data: [], error: "", url: URL };
-//   try {
-//     let { data } = await axios(URL);
-//     props.data = data;
-//     props.error = null;
-//   } catch (error) {
-//     props.data = [];
-//     props.error = error.message;
-//   }
-//   return {
-//     props: props, // will be passed to the page component as props
-//   };
-// }
+export async function getStaticProps() {
+  let URL = `${BASE_API_ROUTE}/api/v1/products`;
+  let props = { data: [], error: "", url: URL };
+  try {
+    let { data } = await axios(URL);
+    props.data = data;
+    props.error = null;
+  } catch (error) {
+    props.data = [];
+    props.error = error.message;
+  }
+  return {
+    props: props, // will be passed to the page component as props
+  };
+}
 
 const index = ({ data=[], error }) => {
   return (
