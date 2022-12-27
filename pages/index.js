@@ -5,6 +5,7 @@ import { BASE_API_ROUTE } from "../const";
 
 export async function getStaticProps() {
   let URL = `${BASE_API_ROUTE}/api/v1/products`;
+  console.log(URL);
   let props = { data: [], error: "", url: URL };
   try {
     let data = await (await fetch(URL)).json();
