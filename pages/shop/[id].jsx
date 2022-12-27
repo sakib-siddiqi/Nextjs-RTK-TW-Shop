@@ -12,12 +12,12 @@ export async function getStaticPaths() {
     const { data } = await axios.get(URL);
     return {
       paths: data.map((ele) => ({ params: { id: ele._id } })),
-      fallback: true, // can also be true or 'blocking'
+      fallback: "blocking", // can also be true or 'blocking'
     };
   } catch (error) {
     return {
-      notFound: true,
-      fallback: true,
+      paths: [],
+      fallback: "blocking",
     };
   }
 }
@@ -35,11 +35,11 @@ export async function getStaticProps(context) {
   }
 }
 
-const SingleProduct = ({ data={} }) => {
-    const dispatch=useDispatch();
-    function on_add_to_cart(){
-        dispatch(add_to_cart(data))
-    }
+const SingleProduct = ({ data = {} }) => {
+  const dispatch = useDispatch();
+  function on_add_to_cart() {
+    dispatch(add_to_cart(data));
+  }
 
   return (
     <section className="pt-16">
@@ -61,7 +61,10 @@ const SingleProduct = ({ data={} }) => {
             <h1 className="text-6xl font-semibold text-slate-800 tracking-wider">
               {data?.price}
             </h1>
-            <button className="h-12 w-12 rounded-full bg-rose-500 inline-grid place-items-center text-white active:bg-rose-900 hover:bg-rose-700 my-4" onClick={on_add_to_cart}>
+            <button
+              className="h-12 w-12 rounded-full bg-rose-500 inline-grid place-items-center text-white active:bg-rose-900 hover:bg-rose-700 my-4"
+              onClick={on_add_to_cart}
+            >
               <AiOutlineShoppingCart size={24} />
             </button>
           </div>
