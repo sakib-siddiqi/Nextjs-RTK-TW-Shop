@@ -24,7 +24,7 @@ export async function getServerSideProps() {
 export default function Home({ data = [], error = "" }) {
   if (error)
     return (
-      <h1 className="text-4xl font-bold font-mono text-rose-800">{error}</h1>
+      <h1 className="text-4xl font-bold font-mono text-indigo-800">{error}</h1>
     );
   return (
     <>
@@ -38,12 +38,12 @@ export default function Home({ data = [], error = "" }) {
         <Banner />
         {/* PRODUCT GIRDS */}
         <section className="py-16 bg-white">
-          <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] gap-5 items-center">
-            <hr className="border-0 h-1 bg-gradient-to-l from-pink-300" />
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-5 items-center justify-center text-center">
+            <hr className="hidden md:inline-block border-0 h-1 bg-gradient-to-l from-indigo-300" />
             <h1 className="text-3xl font-bold font-cinzel">Featured</h1>
-            <hr className="border-0 h-1 bg-gradient-to-l to-purple-400 from-pink-400 rounded-full" />
+            <hr className="hidden md:inline-block border-0 h-1 bg-gradient-to-l to-purple-400 from-indigo-400 rounded-full" />
             <h1 className="text-3xl font-bold font-cinzel">Products</h1>
-            <hr className="border-0 h-1 bg-gradient-to-r from-pink-300" />
+            <hr className="hidden md:inline-block border-0 h-1 bg-gradient-to-r from-indigo-300" />
           </div>
           <ProductGrid className="py-5" products={data} error={error} />
         </section>

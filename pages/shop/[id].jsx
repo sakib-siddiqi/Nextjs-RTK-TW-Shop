@@ -49,7 +49,7 @@ const SingleProduct = ({ data = {} }) => {
             <Image
               src={data?.image}
               alt=""
-              className="max-h-96 object-contain object-center border-2 border-rose-200 rounded-md"
+              className="max-h-96 object-contain object-center border-2 border-indigo-200 rounded-md"
               height={500}
               width={500}
             />
@@ -62,7 +62,7 @@ const SingleProduct = ({ data = {} }) => {
               {data?.price}
             </h1>
             <button
-              className="h-12 w-12 rounded-full bg-rose-500 inline-grid place-items-center text-white active:bg-rose-900 hover:bg-rose-700 my-4"
+              className="h-12 w-12 rounded-full bg-indigo-500 inline-grid place-items-center text-white active:bg-indigo-900 hover:bg-indigo-700 my-4"
               onClick={on_add_to_cart}
             >
               <AiOutlineShoppingCart size={24} />

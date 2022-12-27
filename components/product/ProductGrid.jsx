@@ -12,13 +12,13 @@ export function ProductCard({ product = {} }) {
   }
 
   return (
-    <figure className="p-1 bg-white border-2 rounded-md border-rose-300 relative pb-6 mb-4">
+    <figure className="p-1 bg-white border-2 rounded-md border-indigo-300 relative pb-6 mb-4">
       <Image
         src={product.image}
         alt={product.title}
         width={300}
         height={300}
-        className="w-full object-contain object-center max-h-44 mb-2 text-slate-800 rounded-md border-2 border-rose-100"
+        className="w-full object-contain object-center max-h-44 mb-2 text-slate-800 rounded-md border-2 border-indigo-100"
       />
       <h4
         className="text-sm tracking-wide font-semibold truncate"
@@ -28,20 +28,20 @@ export function ProductCard({ product = {} }) {
       </h4>
       <div className=" flex gap-3 absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 ">
         <button
-          className="bg-gradient-to-b from-rose-500 to-rose-700 active:from-rose-500 active:to-rose-900 text-white pl-3 p-2 h-auto min-h-[auto] rounded-full ring-2 ring-offset-2 ring-rose-300"
+          className="bg-gradient-to-b from-indigo-500 to-indigo-700 active:from-indigo-500 active:to-indigo-900 text-white pl-3 p-2 h-auto min-h-[auto] rounded-full ring-2 ring-offset-2 ring-indigo-300"
           onClick={on_add_to_cart}
         >
           <FaCartArrowDown className="-ml-1" />
         </button>
-        <Link
+        {/* <Link
           href={`/shop/${product?._id}`}
-          className="bg-gradient-to-b from-rose-500 to-rose-700 active:from-rose-700 active:to-rose-900 text-white pl-3 p-2 h-auto min-h-[auto] rounded-full ring-2 ring-offset-2 ring-rose-300"
+          className="bg-gradient-to-b from-indigo-500 to-indigo-700 active:from-indigo-700 active:to-indigo-900 text-white pl-3 p-2 h-auto min-h-[auto] rounded-full ring-2 ring-offset-2 ring-indigo-300"
         >
           <MdOutlineOpenWith className="-ml-1" />
-        </Link>
+        </Link> */}
         <Link
           href={`/products/${product?._id}`}
-          className="bg-gradient-to-b from-rose-500 to-rose-700 active:from-rose-700 active:to-rose-900 text-white pl-3 p-2  min-h-[auto] rounded-full ring-2 ring-offset-2 ring-rose-300"
+          className="bg-gradient-to-b from-indigo-500 to-indigo-700 active:from-indigo-700 active:to-indigo-900 text-white pl-3 p-2  min-h-[auto] rounded-full ring-2 ring-offset-2 ring-indigo-300"
         >
           <MdOutlineOpenWith className="-ml-1" />
         </Link>

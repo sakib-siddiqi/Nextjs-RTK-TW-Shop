@@ -102,7 +102,7 @@ export default function layout({ children }) {
     <>
       {/* CART POPUP */}
 
-      <header className="bg-white/60 bg-blend-saturation backdrop-saturate-150 backdrop-blur-xl fixed w-full z-50">
+      <header className="bg-white bg-blend-saturation backdrop-saturate-150 backdrop-blur-xl fixed w-full z-50">
         <div className="navbar container">
           <div className="navbar-start">
             <div className="dropdown">
@@ -130,6 +130,9 @@ export default function layout({ children }) {
                   <Link href="/">Home</Link>
                 </li>
                 <li className="rounded-sm">
+                  <Link href="/products">Products</Link>
+                </li>
+                <li className="rounded-sm">
                   <Link href="/shop">Shop</Link>
                 </li>
               </ul>
@@ -138,7 +141,7 @@ export default function layout({ children }) {
           <div className="navbar-center">
             <Link href={"/"} className="normal-case text-xl">
               <img
-                src="./dot-logo.svg"
+                src="//dot-shop.vercel.app/dot-logo.svg"
                 alt="Dot Shop"
                 className="max-w-[100px]"
               />
@@ -173,15 +176,15 @@ export default function layout({ children }) {
 
       {/* MAIN */}
       <main>{children}</main>
-      <footer className="py-3 bg-rose-600 text-center">
+      <footer className="py-3 border-t-2 border-dashed border-slate-300 text-center">
         <div className="container">
-          <p className="font-medium text-xl font-mono text-white tracking-wider">
-            Developed by
+          <p className="font-medium text-xl font-mono text-slate-900 tracking-wider">
+            👋 Developed by
             <a
               href="PORTFOLIO"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline decoration-wavy hover:decoration-double underline-offset-4 decoration-rose-300 ml-2"
+              className="underline decoration-wavy hover:decoration-double underline-offset-4 decoration-slate-700 ml-2"
             >
               @sakib
             </a>
