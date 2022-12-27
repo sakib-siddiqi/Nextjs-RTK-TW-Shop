@@ -39,23 +39,26 @@ export function ProductCard({ product = {} }) {
         >
           <MdOutlineOpenWith className="-ml-1" />
         </Link>
-          <Link
-            href={`/products/${product?._id}`}
-            className="bg-gradient-to-b from-rose-500 to-rose-700 active:from-rose-700 active:to-rose-900 text-white pl-3 p-2  min-h-[auto] rounded-full ring-2 ring-offset-2 ring-rose-300"
-          >
-            <MdOutlineOpenWith className="-ml-1" />
-          </Link>
+        <Link
+          href={`/products/${product?._id}`}
+          className="bg-gradient-to-b from-rose-500 to-rose-700 active:from-rose-700 active:to-rose-900 text-white pl-3 p-2  min-h-[auto] rounded-full ring-2 ring-offset-2 ring-rose-300"
+        >
+          <MdOutlineOpenWith className="-ml-1" />
+        </Link>
       </div>
     </figure>
   );
 }
 
-const ProductGrid = ({ className, products, error }) => {
+const ProductGrid = ({ className, products = [], error }) => {
+  console.log({ products });
+  if (error || !Array.isArray(products))
+    return error || "`products` is not an array";
   return (
     <div
       className={`container gap-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 ${className}`}
     >
-      {products?.map((product, index) => (
+      {[...products]?.map((product, index) => (
         <ProductCard key={index} product={product} />
       ))}
     </div>

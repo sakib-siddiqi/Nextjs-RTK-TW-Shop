@@ -7,8 +7,8 @@ let URL =
 
 const connectDB = async () => {
   // Use new db connection
-  console.log(URL)
-  return mongoose.connect(URL);
+  console.log(URL);
+  return mongoose.connect(process.env.DB_URL);
 };
 
 export default connectDB;
