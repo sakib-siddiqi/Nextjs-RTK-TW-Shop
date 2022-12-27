@@ -13,15 +13,15 @@ export async function getServerSideProps() {
   } catch (error) {
     props.data = [];
     props.error = error.message;
-    props.stack=error.stack;
+    props.stack = error.stack;
   }
   return {
     props: props, // will be passed to the page component as props
   };
 }
 
-const index = ({ data, error }) => {
-  console.log({data,error})
+const index = ({ data, ...rest }) => {
+  console.log({ data, rest });
   return (
     <section className="py-16 bg-white">
       <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] gap-5 items-center">
