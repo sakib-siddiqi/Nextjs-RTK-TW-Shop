@@ -13,6 +13,7 @@ export async function getServerSideProps() {
   } catch (error) {
     props.data = [];
     props.error = error.message;
+    props.stack=error.stack;
   }
   return {
     props: props, // will be passed to the page component as props
