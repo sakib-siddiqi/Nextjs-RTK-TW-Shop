@@ -10,14 +10,17 @@ export async function getServerSideProps() {
     let { data } = await axios(URL);
     props.data = data;
     props.error = null;
+    return {
+      props,
+    };
   } catch (error) {
     props.data = [];
     props.error = error.message;
     props.stack = error.stack;
+    return {
+      props,
+    };
   }
-  return {
-    props: props, // will be passed to the page component as props
-  };
 }
 
 const index = ({ data, stack, error }) => {
