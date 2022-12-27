@@ -5,26 +5,23 @@ import { BASE_API_ROUTE } from "../../const";
 
 export async function getServerSideProps() {
   let URL = `${BASE_API_ROUTE}/api/v1/products`;
-  let props = { data: [], error: "", url: URL };
   try {
     let { data } = await axios(URL);
-    props.data = data;
-    props.error = null;
     return {
-      props,
+      props: { data, error: null },
     };
   } catch (error) {
-    props.data = [];
-    props.error = error.message;
-    props.stack = error.stack;
     return {
-      props,
+      props: {
+        data: [],
+        error: error.message,
+      },
     };
   }
 }
 
-const index = ({ data, stack, error }) => {
-  console.log({ data, stack, error });
+const index = ({ data, error = "An error" }) => {
+  console.log({ data, error });
   return (
     <section className="py-16 bg-white">
       <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] gap-5 items-center">
