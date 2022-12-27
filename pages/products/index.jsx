@@ -20,6 +20,7 @@ export async function getServerSideProps() {
 }
 
 const index = ({ data, error }) => {
+  console.log({data,error})
   return (
     <section className="py-16 bg-white">
       <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] gap-5 items-center">
