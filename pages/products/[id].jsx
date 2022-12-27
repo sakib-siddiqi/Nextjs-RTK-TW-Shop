@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
   }
 }
 
-const SingleProduct = ({ data={} }) => {
+const SingleProduct = ({ data = {} }) => {
   const {
     query: { id },
   } = useRouter();
@@ -30,12 +30,21 @@ const SingleProduct = ({ data={} }) => {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
           <div>
-            <Image src={data?.image} alt="" className="max-h-96 object-contain object-center border-2 border-rose-200 rounded-md" height={500} width={500} />
+            <Image
+              src={data?.image}
+              alt=""
+              className="max-h-96 object-contain object-center border-2 border-rose-200 rounded-md"
+              height={500}
+              width={500}
+            />
           </div>
           <div className="col-span-2">
             <h1 className="text-lg font-semibold text-slate-800 tracking-wider">
               {data?.title}
             </h1>
+            <span className="p-2 rounded-md border-2 border-rose-400 bg-rose-200 text-md font-bold text-rose-800 tracking-wider">
+              {data?.price}
+            </span>
           </div>
         </div>
       </div>
