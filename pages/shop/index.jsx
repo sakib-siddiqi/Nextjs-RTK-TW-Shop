@@ -7,7 +7,7 @@ export async function getStaticProps() {
   let URL = `${BASE_API_ROUTE}/api/v1/products`;
   let props = { data: [], error: "", url: URL };
   try {
-    let { data } = await axios(URL);
+    let data = await (await fetch(URL)).json();
     props.data = data;
     props.error = null;
   } catch (error) {
@@ -19,7 +19,7 @@ export async function getStaticProps() {
   };
 }
 
-const index = ({ data=[], error }) => {
+const index = ({ data = [], error }) => {
   return (
     <section className="py-16 bg-white">
       <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] gap-5 items-center">
