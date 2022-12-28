@@ -1,7 +1,7 @@
 import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineCar } from "react-icons/ai";
 import { BsBuilding, BsFillPlayFill } from "react-icons/bs";
 import { IoShareSocialOutline } from "react-icons/io5";
@@ -23,21 +23,28 @@ export async function getServerSideProps(context) {
   } catch (error) {
     return {
       notFound: true,
+      data: {}
     };
   }
 }
 
 const SingleProduct = ({ data = {} }) => {
+  useEffect(() => {
+    document?.body?.classList?.add('bg-indigo-50');
+    return () => {
+      document?.body.classList?.remove('bg-indigo-50');
+    }
+  }, [])
   return (
     <>
       <Head>
-        <title>{data?.title} - DOT Shop</title>
-        <body className="bg-indigo-50" />
+        <title>{data?.title}</title>
+        <meta property="og:image" content={data?.image} />
       </Head>
       <section className="pt-16 pb-4">
         <div className="container py-10">
           <div className="grid grid-cols-1 md:grid-cols-8 lg:grid-cols-10 gap-8">
-            <div className="col-span-10 md:col-span-5 lg:col-span-4">
+            <div className="col-span-10 md:col-span-3 lg:col-span-4">
               <Image
                 src={data?.image}
                 alt=""
@@ -53,7 +60,7 @@ const SingleProduct = ({ data = {} }) => {
               <div className="flex gap-3 mb-4 md:mb-14">
                 <div className="grow">
                   <h2 className="font-bold text-slate-700 tracking-wide text-3xl mb-10">
-                    {data.title}
+                    {data?.title}
                   </h2>
                   <div className="grid gap-5 grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                     <p className="tracking-wide  font-medium text-slate-600">
