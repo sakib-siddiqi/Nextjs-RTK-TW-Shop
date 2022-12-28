@@ -2,6 +2,7 @@ import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
 import React, { useEffect, useMemo } from "react";
+import { toast } from "react-hot-toast";
 import { AiOutlineCar } from "react-icons/ai";
 import { BsBuilding, BsFillPlayFill } from "react-icons/bs";
 import { IoShareSocialOutline } from "react-icons/io5";
@@ -38,6 +39,20 @@ const SingleProduct = ({ data = {} }) => {
   data.cart_count = useMemo(() => (cart?.find(ele => ele?.product_id === data?._id))?.count || 0, [cart]);
   function onAddToCart() {
     dispatch(add_to_cart(data));
+  }
+  function onShare() {
+    if (navigator.share) {
+      toast.promise(navigator.share({
+        title: 'web.dev',
+        text: 'Check out web.dev.',
+        url: 'https://web.dev/',
+      }), {
+        loading: 'Loading...',
+        success: 'Shared',
+      }).catch(error=>{
+        toast.error(error?.message)
+      })
+    }
   }
   useEffect(() => {
     document?.body?.classList?.add('bg-indigo-50');
@@ -126,7 +141,7 @@ const SingleProduct = ({ data = {} }) => {
                   </div>
                 </div>
                 <div>
-                  <button className="rounded-full bg-white text-indigo-900 text-2xl h-12 w-12 grid place-items-center shadow-xl shadow-indigo-500/10 hover:shadow-indigo-600/25 duration-300">
+                  <button className="rounded-full bg-white text-indigo-900 text-2xl h-12 w-12 grid place-items-center shadow-xl shadow-indigo-500/10 hover:shadow-indigo-600/25 duration-300" onClick={onShare}>
                     <IoShareSocialOutline />
                   </button>
                 </div>
