@@ -4,26 +4,18 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector } from "react-redux";
-import { BASE_API_ROUTE } from "../const";
 import CART_SLICE from "../redux/slices/cart.slice";
 
 const PORTFOLIO = "https://sakib-siddiqi.netlify.app/";
 
-export async function getServerSideProps() {
-  return {
-    props: {
-      URL: `${BASE_API_ROUTE}/api/v1/products`,
-    },
-  };
-}
 
-function CartCart({ product, URL }) {
+function CartCart({ product }) {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`${URL}/${product?.product_id}`)
+      .get(`${window.location.origin}/api/v1/products/${product?.product_id}`)
       .then(({ data }) => {
         setData(data);
         console.log({ data });
