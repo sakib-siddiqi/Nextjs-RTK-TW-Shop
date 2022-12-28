@@ -9,17 +9,24 @@ import CART_SLICE from "../redux/slices/cart.slice";
 
 const PORTFOLIO = "https://sakib-siddiqi.netlify.app/";
 
-function CartCart({ product }) {
+export async function getServerSideProps() {
+  return {
+    props: {
+      URL: `${BASE_API_ROUTE}/api/v1/products`,
+    },
+  };
+}
+
+function CartCart({ product, URL }) {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    console.log("BASE_API_ROUTE",BASE_API_ROUTE);
-    console.log("ID",product?.product_id);
     setLoading(true);
-    axios.get(`${BASE_API_ROUTE}/api/v1/products/${product?.product_id}`)
+    axios
+      .get(`${URL}/${product?.product_id}`)
       .then(({ data }) => {
         setData(data);
-        console.log({data});
+        console.log({ data });
       })
       .catch((error) => {
         console.info(error);
@@ -28,7 +35,7 @@ function CartCart({ product }) {
         setLoading(false);
       });
   }, [product?.product_id]);
-  console.log('-->CART DATA',data)
+  console.log("-->CART DATA", data);
   if (loading) return <p className="text-slate-300 font-mono">Loading...</p>;
   return (
     <div className="grid grid-cols-12 gap-2 mb-3 border-2 border-slate-100  bg-slate-50 overflow-hidden">
