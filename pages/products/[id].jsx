@@ -41,7 +41,8 @@ const SingleProduct = ({ data = {} }) => {
         <title>{data?.title}</title>
         <meta property="og:image" content={data?.image} />
         <meta property="og:title" content={data?.title+"- DOT SHOP"} />
-        <meta property="og:description" content={data?.details || "DOT shop, best online shop.<br/> Developed by @sakib.siddiqi.supto "} />
+        <meta property="og:description" content={"DOT shop, best online shop.<br/> Developed by @sakib.siddiqi.supto "} />
+        <meta property="og:determiner" content="the" />
         <meta property="twitter:image" content={data?.image} />
         <meta property="twitter:title" content={data?.title+"- DOT SHOP"} />
         <meta property="twitter:description" content={data?.details || "DOT shop, best online shop.<br/> Developed by @sakib.siddiqi.supto "} />
