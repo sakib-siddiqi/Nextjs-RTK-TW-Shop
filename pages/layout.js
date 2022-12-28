@@ -13,7 +13,8 @@ function CartCart({ product }) {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    console.log(BASE_API_ROUTE);
+    console.log("BASE_API_ROUTE",BASE_API_ROUTE);
+    console.log("ID",product?.product_id);
     setLoading(true);
     axios.get(`${BASE_API_ROUTE}/api/v1/products/${product?.product_id}`)
       .then(({ data }) => {
