@@ -15,9 +15,10 @@ function CartCart({ product }) {
   useEffect(() => {
     console.log(BASE_API_ROUTE);
     setLoading(true);
-    axios(`${BASE_API_ROUTE}/api/v1/products/${product?.product_id}`)
+    axios.get(`${BASE_API_ROUTE}/api/v1/products/${product?.product_id}`)
       .then(({ data }) => {
         setData(data);
+        console.log({data});
       })
       .catch((error) => {
         console.info(error);
@@ -26,6 +27,7 @@ function CartCart({ product }) {
         setLoading(false);
       });
   }, [product?.product_id]);
+  console.log('-->CART DATA',data)
   if (loading) return <p className="text-slate-300 font-mono">Loading...</p>;
   return (
     <div className="grid grid-cols-12 gap-2 mb-3 border-2 border-slate-100  bg-slate-50 overflow-hidden">
@@ -181,7 +183,7 @@ export default function layout({ children }) {
           <p className="font-medium text-xl font-mono text-slate-900 tracking-wider">
             👋 Developed by
             <a
-              href="PORTFOLIO"
+              href={PORTFOLIO}
               target="_blank"
               rel="noopener noreferrer"
               className="underline decoration-wavy hover:decoration-double underline-offset-4 decoration-slate-700 ml-2"
