@@ -2,17 +2,36 @@ import Head from "next/head";
 import Router from "next/router";
 import nProgress from "nprogress";
 import { Provider } from "react-redux";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
 import store from "../redux/store";
 import "../styles/globals.css";
 import Layout from "./layout";
 
-Router.onRouteChangeStart = url => {
-  nProgress.start()
+function Loading() {
+  return (
+    <main className="min-h-screen grid place-items-center">
+      <div>
+        <img
+          src="//dot-shop.vercel.app/dot-logo.svg"
+          alt=""
+          className="max-w-[250px] w-full"
+        />
+        <h2 className="text-center font-semibold text-xl font-mono text-slate-600">
+          Loading...
+        </h2>
+      </div>
+    </main>
+  );
 }
 
-Router.onRouteChangeComplete = () => nProgress.done()
+Router.onRouteChangeStart = (url) => {
+  nProgress.start();
+};
 
-Router.onRouteChangeError = () => nProgress.done()
+Router.onRouteChangeComplete = () => nProgress.done();
+
+Router.onRouteChangeError = () => nProgress.done();
 
 export default function App({ Component, pageProps }) {
   // const [loading, setLoading] = useState(false);
@@ -38,15 +57,17 @@ export default function App({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
-      <Layout>
-        <Head>
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
-          />
-        </Head>
-        <Component {...pageProps} />
-      </Layout>
+      <PersistGate loading={<Loading />} persistor={persistStore(store)}>
+        <Layout>
+          <Head>
+            <link
+              rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
+            />
+          </Head>
+          <Component {...pageProps} />
+        </Layout>
+      </PersistGate>
     </Provider>
   );
 }
