@@ -2,7 +2,6 @@ import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
 import React, { useEffect, useMemo } from "react";
-import { toast } from "react-hot-toast";
 import { AiOutlineCar } from "react-icons/ai";
 import { BsBuilding, BsFillPlayFill } from "react-icons/bs";
 import { IoShareSocialOutline } from "react-icons/io5";
@@ -41,17 +40,13 @@ const SingleProduct = ({ data = {} }) => {
     dispatch(add_to_cart(data));
   }
   function onShare() {
-    if (navigator.share) {
-      toast.promise(navigator.share({
-        title: 'web.dev',
-        text: 'Check out web.dev.',
-        url: 'https://web.dev/',
-      }), {
-        loading: 'Loading...',
-        success: 'Shared',
-      }).catch(error=>{
-        toast.error(error?.message)
-      })
+    const share_data = {
+      title: data.title,
+      text: data.details,
+      url: window?.location?.href,
+    }
+    if (navigator.share && navigator.canShare(share_data)) {
+      navigator.share(share_data)
     }
   }
   useEffect(() => {
@@ -68,7 +63,7 @@ const SingleProduct = ({ data = {} }) => {
         <meta property="og:title" content={data?.title + "- DOT SHOP"} />
         <meta property="og:description" content={"DOT shop, best online shop.<br/> Developed by @sakib.siddiqi.supto "} />
         <meta property="og:determiner" content="the" />
-        <meta property="twitter:image" content={data?.image} />
+        <meta property="twitter:image" content={data?.images?.[0]} />
         <meta property="twitter:title" content={data?.title + "- DOT SHOP"} />
         <meta property="twitter:description" content={data?.details || "DOT shop, best online shop.<br/> Developed by @sakib.siddiqi.supto "} />
         <meta property="twitter:image" content={data?.image} />
@@ -80,10 +75,10 @@ const SingleProduct = ({ data = {} }) => {
           <div className="grid grid-cols-1 md:grid-cols-8 lg:grid-cols-10 gap-8">
             <div className="col-span-10 md:col-span-3 lg:col-span-4">
               <Image
-                src={data?.image}
+                src={data?.images?.[1] || data?.images?.[0]}
                 alt=""
-                className=" object-contain object-center rounded-md aspect-[83/77] shadow-2xl shadow-indigo-300/25"
-                height={700}
+                className=" object-cover rounded-lg border-2 border-dashed border-indigo-500 object-center aspect-[83/77] shadow-2xl shadow-indigo-300/25"
+                height={500}
                 width={500}
               />
             </div>

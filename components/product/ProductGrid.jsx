@@ -14,7 +14,7 @@ export function ProductCard({ product = {} }) {
   return (
     <figure className="p-1 bg-white border-2 rounded-md border-indigo-300 relative pb-6 mb-4">
       <Image
-        src={product.image}
+        src={product.images?.[0]}
         alt={product.title}
         width={300}
         height={300}
