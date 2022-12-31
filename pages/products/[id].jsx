@@ -55,6 +55,7 @@ const SingleProduct = ({ data = {} }) => {
       document?.body.classList?.remove('bg-indigo-50');
     }
   }, [])
+  console.log(data?.images[0]);
   return (
     <>
       <Head>
