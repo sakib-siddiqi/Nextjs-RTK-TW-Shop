@@ -13,19 +13,21 @@ export function ProductCard({ product = {} }) {
 
   return (
     <figure className="p-1 bg-white border-2 rounded-md border-indigo-300 relative pb-6 mb-4">
-      <Image
-        src={product.images?.[0]}
-        alt={product.title}
-        width={300}
-        height={300}
-        className="w-full object-contain object-center max-h-44 mb-2 text-slate-800 rounded-md border-2 border-indigo-100"
-      />
-      <h4
-        className="text-sm tracking-wide font-semibold truncate"
-        title={product?.title || ""}
-      >
-        {product.title || "___"}
-      </h4>
+      <Link href={`/shop/${product?._id}`} className="block">
+        <Image
+          src={product.images?.[0]}
+          alt={product.title}
+          width={300}
+          height={300}
+          className="w-full object-contain object-center max-h-44 mb-2 text-slate-800 rounded-md border-2 border-indigo-100"
+        />
+        <h4
+          className="text-sm tracking-wide font-semibold truncate"
+          title={product?.title || ""}
+        >
+          {product.title || "___"}
+        </h4>
+      </Link>
       <div className=" flex gap-3 absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 ">
         <button
           className="bg-gradient-to-b from-indigo-500 to-indigo-700 active:from-indigo-500 active:to-indigo-900 text-white pl-3 p-2 h-auto min-h-[auto] rounded-full ring-2 ring-offset-2 ring-indigo-300"
