@@ -63,9 +63,9 @@ const SingleProduct = ({ data = {} }) => {
         <meta property="og:title" content={data?.title + "- DOT SHOP"} />
         <meta property="og:description" content={"DOT shop, best online shop.<br/> Developed by @sakib.siddiqi.supto "} />
         <meta property="og:determiner" content="the" />
-        <meta property="twitter:image" content={data?.images?.[0]} />
+        {/* <meta property="twitter:image" content={data?.images?.[0]} />
         <meta property="twitter:title" content={data?.title + "- DOT SHOP"} />
-        <meta property="twitter:description" content={data?.details || "DOT shop, best online shop.<br/> Developed by @sakib.siddiqi.supto "} />
+        <meta property="twitter:description" content={data?.details || "DOT shop, best online shop.<br/> Developed by @sakib.siddiqi.supto "} /> */}
       </Head>
       <section className="pt-16 pb-4">
         <div className="container py-10">
