@@ -25,17 +25,18 @@ export async function getServerSideProps(context) {
   } catch (error) {
     return {
       notFound: true,
-      data: {}
+      data: {},
     };
   }
 }
 
 const SingleProduct = ({ data = {} }) => {
-
-
   const dispatch = useDispatch();
-  const cart = useSelector(store => store.cart.cart);
-  data.cart_count = useMemo(() => (cart?.find(ele => ele?.product_id === data?._id))?.count || 0, [cart]);
+  const cart = useSelector((store) => store.cart.cart);
+  data.cart_count = useMemo(
+    () => cart?.find((ele) => ele?.product_id === data?._id)?.count || 0,
+    [cart]
+  );
   function onAddToCart() {
     dispatch(add_to_cart(data));
   }
@@ -44,29 +45,30 @@ const SingleProduct = ({ data = {} }) => {
       title: data.title,
       text: data.details,
       url: window?.location?.href,
-    }
+    };
     if (navigator.share && navigator.canShare(share_data)) {
-      navigator.share(share_data)
+      navigator.share(share_data);
     }
   }
   useEffect(() => {
-    document?.body?.classList?.add('bg-indigo-50');
+    document?.body?.classList?.add("bg-indigo-50");
     return () => {
-      document?.body.classList?.remove('bg-indigo-50');
-    }
-  }, [])
-  console.log(data?.images[0]);
+      document?.body.classList?.remove("bg-indigo-50");
+    };
+  }, []);
   return (
     <>
       <Head>
         <title>{data?.title}</title>
-        <meta property="og:image" content={data?.images[0]} />
+        {/* <meta property="og:image" content={data?.images[0]} /> */}
         <meta property="og:title" content={data?.title + "- DOT SHOP"} />
-        <meta property="og:description" content={"DOT shop, best online shop.<br/> Developed by @sakib.siddiqi.supto "} />
+        <meta
+          property="og:description"
+          content={
+            "DOT shop, best online shop.<br/> Developed by @sakib.siddiqi.supto "
+          }
+        />
         <meta property="og:determiner" content="the" />
-        {/* <meta property="twitter:image" content={data?.images?.[0]} />
-        <meta property="twitter:title" content={data?.title + "- DOT SHOP"} />
-        <meta property="twitter:description" content={data?.details || "DOT shop, best online shop.<br/> Developed by @sakib.siddiqi.supto "} /> */}
       </Head>
       <section className="pt-16 pb-4">
         <div className="container py-10">
@@ -134,21 +136,32 @@ const SingleProduct = ({ data = {} }) => {
                   </div>
                 </div>
                 <div>
-                  <button className="rounded-full bg-white text-indigo-900 text-2xl h-12 w-12 grid place-items-center shadow-xl shadow-indigo-500/10 hover:shadow-indigo-600/25 duration-300" onClick={onShare}>
+                  <button
+                    className="rounded-full bg-white text-indigo-900 text-2xl h-12 w-12 grid place-items-center shadow-xl shadow-indigo-500/10 hover:shadow-indigo-600/25 duration-300"
+                    onClick={onShare}
+                  >
                     <IoShareSocialOutline />
                   </button>
                 </div>
               </div>
               <div className="flex gap-9 flex-wrap items-center mb-8 md:mb-10">
-                <button className="bg-indigo-500  hover:bg-indigo-600 focus:bg-indigo-600 focus:ring-2 focus:ring-offset-2 py-4 px-6 rounded-full text-white tracking-wider font-semibold inline-flex gap-2 align-middle justify-center relative"
-                  onClick={onAddToCart}>
-                  {data.cart_count > 0 && <span className="h-6 w-6 inline-grid place-items-center rounded-full font-semibold text-xs bg-indigo-800 text-white absolute top-0 right-0 -translate-y-1/3 ring-2 ring-indigo-50">
-                    {data.cart_count}
-                  </span>}
-                  <RiShoppingBagFill className="inline-block h-5 w-5" /> Add TO BAG
+                <button
+                  className="bg-indigo-500  hover:bg-indigo-600 focus:bg-indigo-600 focus:ring-2 focus:ring-offset-2 py-4 px-6 rounded-full text-white tracking-wider font-semibold inline-flex gap-2 align-middle justify-center relative"
+                  onClick={onAddToCart}
+                >
+                  {data.cart_count > 0 && (
+                    <span className="h-6 w-6 inline-grid place-items-center rounded-full font-semibold text-xs bg-indigo-800 text-white absolute top-0 right-0 -translate-y-1/3 ring-2 ring-indigo-50">
+                      {data.cart_count}
+                    </span>
+                  )}
+                  <RiShoppingBagFill className="inline-block h-5 w-5" /> Add TO
+                  BAG
                 </button>
                 <p className="text-slate-800 text-2xl font-bold  tracking-wide">
-                  <span className="text-[14px] text-mono underline decoration-2 decoration-indigo-700 underline-offset-2">ট</span> {numberWithCommas(data?.price || 0)}
+                  <span className="text-[14px] text-mono underline decoration-2 decoration-indigo-700 underline-offset-2">
+                    ট
+                  </span>{" "}
+                  {numberWithCommas(data?.price || 0)}
                 </p>
               </div>
               <hr className="my-5 border-0 h-[1px] bg-indigo-300" />
@@ -193,38 +206,50 @@ const SingleProduct = ({ data = {} }) => {
               <div className="grid grid-cols-2 md:grid-cols-3 my-5">
                 <div className=" p-4 ">
                   <p className="text-slate-400 mb-2">Name</p>
-                  <p className="text-slate-800 font-semibold tracking-wide">MEISTERSINGER</p>
+                  <p className="text-slate-800 font-semibold tracking-wide">
+                    MEISTERSINGER
+                  </p>
                 </div>
                 <div className=" p-4 ">
                   <p className="text-slate-400 mb-2">Color</p>
-                  <p className="text-slate-800 font-semibold tracking-wide">Indigo</p>
+                  <p className="text-slate-800 font-semibold tracking-wide">
+                    Indigo
+                  </p>
                 </div>
                 <div className=" p-4 ">
                   <p className="text-slate-400 mb-2">Warranty</p>
-                  <p className="text-slate-800 font-semibold tracking-wide">3 Years</p>
+                  <p className="text-slate-800 font-semibold tracking-wide">
+                    3 Years
+                  </p>
                 </div>
                 <div className=" p-4 ">
                   <p className="text-slate-400 mb-2">Name</p>
-                  <p className="text-slate-800 font-semibold tracking-wide">MEISTERSINGER</p>
+                  <p className="text-slate-800 font-semibold tracking-wide">
+                    MEISTERSINGER
+                  </p>
                 </div>
                 <div className=" p-4 ">
                   <p className="text-slate-400 mb-2">Color</p>
-                  <p className="text-slate-800 font-semibold tracking-wide">Indigo</p>
+                  <p className="text-slate-800 font-semibold tracking-wide">
+                    Indigo
+                  </p>
                 </div>
                 <div className=" p-4 ">
                   <p className="text-slate-400 mb-2">Warranty</p>
-                  <p className="text-slate-800 font-semibold tracking-wide">3 Years</p>
+                  <p className="text-slate-800 font-semibold tracking-wide">
+                    3 Years
+                  </p>
                 </div>
               </div>
               <div className=" overflow-auto text-slate-500 tracking-wide leading-6">
-                {
-                  [...Array(6)].map(() => (<p className=" mb-4">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo
-                    totam distinctio ut debitis iste velit culpa quos amet quis
-                    earum voluptatibus vero tenetur consequuntur sed facere, odio
-                    a molestias omnis.
-                  </p>))
-                }
+                {[...Array(6)].map(() => (
+                  <p className=" mb-4">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Illo totam distinctio ut debitis iste velit culpa quos amet
+                    quis earum voluptatibus vero tenetur consequuntur sed
+                    facere, odio a molestias omnis.
+                  </p>
+                ))}
               </div>
             </div>
             <div className="lg:col-span-5">
