@@ -58,18 +58,18 @@ export default function App({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
-      <PersistGate loading={<Loading />} persistor={persistStore(store)}>
-        <Layout>
-          <Head>
-            <link
-              rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
-            />
-          </Head>
+      <Layout>
+        <Head>
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
+          />
+        </Head>
+        <PersistGate loading={<Loading />} persistor={persistStore(store)}>
           <Component {...pageProps} />
-          <Toaster />
-        </Layout>
-      </PersistGate>
+        </PersistGate>
+        <Toaster />
+      </Layout>
     </Provider>
   );
 }

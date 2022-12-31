@@ -64,9 +64,7 @@ const SingleProduct = ({ data = {} }) => {
         <meta property="og:title" content={data?.title + "- DOT SHOP"} />
         <meta
           property="og:description"
-          content={
-            "DOT shop, best online shop.<br/> Developed by @sakib.siddiqi.supto "
-          }
+          content={ "DOT shop, best online shop.<br/> Developed by @sakib.siddiqi.supto "}
         />
         <meta property="og:determiner" content="the" />
         <meta property="twitter:image" content={data?.image} />
