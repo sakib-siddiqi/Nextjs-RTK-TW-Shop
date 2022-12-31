@@ -13,7 +13,7 @@ export function ProductCard({ product = {} }) {
 
   return (
     <figure className="p-1 bg-white border-2 rounded-md border-indigo-300 relative pb-6 mb-4">
-      <Link href={`/shop/${product?._id}`} className="block">
+      <Link href={`/products/${product?._id}`} className="block">
         <Image
           src={product.images?.[0]}
           alt={product.title}
