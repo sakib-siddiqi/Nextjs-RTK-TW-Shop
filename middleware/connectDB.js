@@ -7,7 +7,7 @@ let URL =
 
 const connectDB = async () => {
   // Use new db connection
-  console.log(URL);
+  console.log("🎁 DATABSE URL 🎁 ---> : ",URL);
   return mongoose.connect(process.env.DB_URL);
 };
 
