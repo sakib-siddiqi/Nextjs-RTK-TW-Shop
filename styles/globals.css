@@ -3,21 +3,32 @@
 @tailwind components;
 @tailwind utilities;
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   @apply w-2 bg-slate-300;
 }
-::-webkit-scrollbar-thumb{
-  @apply bg-indigo-500;
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-800;
 }
 
 @layer components {
   .container {
     @apply max-w-7xl mx-auto px-3;
   }
-  #__next{
-    @apply min-h-screen flex flex-col;
+  #__next {
+    @apply min-h-screen flex flex-col overflow-auto;
   }
-  #__next main{
+  #__next main {
     @apply flex-grow;
+  }
+
+  /* INPUT FILED */
+  label {
+    @apply cursor-pointer;
+  }
+  .input {
+    @apply px-3 py-2 w-full outline-2 outline-dashed outline-slate-300 focus:outline-dashed focus:outline-indigo-400 rounded-sm h-auto;
+  }
+  .label {
+    @apply text-sm mb-[2px] text-slate-700 tracking-wide font-semibold;
   }
 }

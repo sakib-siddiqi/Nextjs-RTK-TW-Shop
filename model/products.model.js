@@ -2,12 +2,16 @@ import { model, models, Schema } from "mongoose";
 
 const productsSchema = new Schema({
   title: String,
+  desc:{
+    type:String,
+    minLength:10
+  },
   price: {
     type: Number,
     require: true,
     default: 1,
   },
-  strock: {
+  stock: {
     type: Number,
     require: true,
     default: 10,
@@ -17,10 +21,10 @@ const productsSchema = new Schema({
     require: true,
     default: 0,
   },
-  image: {
+  images: [{
     type: String,
-    default: null,
-  },
+    default: [],
+  }],
   rating: {
     count: {
       type: Number,

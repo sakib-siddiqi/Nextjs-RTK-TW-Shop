@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { cart_position } from "./middleware/cart.middleware";
+import products from "./rtk/products";
 import CART_SLICE from "./slices/cart.slice";
 const persistConfig = {
   key: "root",
@@ -9,6 +10,7 @@ const persistConfig = {
 };
 const root_reducer = combineReducers({
   [CART_SLICE.name]: CART_SLICE.reducer,
+  [products.reducerPath]: products.reducer,
 });
 const persistedReducer = persistReducer(persistConfig, root_reducer);
 

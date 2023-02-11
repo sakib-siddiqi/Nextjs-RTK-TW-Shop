@@ -6,7 +6,7 @@ const userSchema = new Schema({
     type: String,
     minLen: [3, "{VALUE} length is less then 3."],
     require: true,
-    unique:true
+    unique: true,
   },
   password: {
     type: String,
@@ -19,7 +19,7 @@ const userSchema = new Schema({
   email: {
     type: String,
     require: [true, "Email is required."],
-    unique:[true,"{VALUE} is already in use. try another email."],
+    unique: [true, "{VALUE} is already in use. try another email."],
     validate: {
       validator: isEmail,
       message: "Email is invalid.",
@@ -29,9 +29,9 @@ const userSchema = new Schema({
 userSchema.pre("save", function (next) {
   if (
     !this &&
-    [...Object.keys(this)].find((e) => e === ("name" || "email" || "password"))
+    [...Object.keys(this)].find((e) => e !== ("name" || "email" || "password"))
   )
-    return new Error("User body is invalid.");
+    throw new Error("User body is invalid.");
   // else if (!isEmail(this.email)) throw new Error("Email is invalid.");
   // else if (!isPassword(this.password)) throw new Error("Password is invalid.");
   next();

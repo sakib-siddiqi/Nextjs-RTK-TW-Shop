@@ -8,7 +8,6 @@ import CART_SLICE from "../redux/slices/cart.slice";
 
 const PORTFOLIO = "https://sakib-siddiqi.netlify.app/";
 
-
 function CartCart({ product }) {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
@@ -18,7 +17,6 @@ function CartCart({ product }) {
       .get(`${window.location.origin}/api/v1/products/${product?.product_id}`)
       .then(({ data }) => {
         setData(data);
-        console.log({ data });
       })
       .catch((error) => {
         console.info(error);
@@ -27,7 +25,6 @@ function CartCart({ product }) {
         setLoading(false);
       });
   }, [product?.product_id]);
-  console.log("-->CART DATA", data);
   if (loading) return <p className="text-slate-300 font-mono">Loading...</p>;
   return (
     <div className="grid grid-cols-12 gap-2 mb-3 border-2 border-slate-100  bg-slate-50 overflow-hidden">
@@ -103,8 +100,7 @@ export default function layout({ children }) {
   return (
     <>
       {/* CART POPUP */}
-
-      <header className="bg-white bg-blend-saturation backdrop-saturate-150 backdrop-blur-xl fixed w-full z-50">
+      <header className="bg-white bg-blend-saturation backdrop-saturate-150 backdrop-blur-xl sticky w-full z-50">
         <div className="navbar container">
           <div className="navbar-start">
             <div className="dropdown">
@@ -136,6 +132,9 @@ export default function layout({ children }) {
                 </li>
                 <li className="rounded-sm">
                   <Link href="/shop">Shop</Link>
+                </li>
+                <li className="rounded-sm">
+                  <Link href="/dashboard">Dashboard</Link>
                 </li>
               </ul>
             </div>

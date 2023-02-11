@@ -53,7 +53,6 @@ export function ProductCard({ product = {} }) {
 }
 
 const ProductGrid = ({ className, products = [], error }) => {
-  console.log({ products });
   if (error || !Array.isArray(products))
     return error || "`products` is not an array";
   return (
