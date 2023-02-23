@@ -1,21 +1,21 @@
 import { REQ_METHOD } from "../../../../const";
 import Cart from "../../../../model/cart.model";
+import { getCart } from "../../../../services/cart.services";
 
 export default async function cart_handler(req, res) {
   try {
-    const METHOD = req.method;
-    const DATA = req.body;
+    const { method: METHOD, body: data, query } = req;
     switch (METHOD) {
       case REQ_METHOD.GET: {
-        const result = await Cart.create(DATA);
+        const result = await getCart({ query });
         return res.status(200).json(result);
       }
       case REQ_METHOD.POST: {
-        const result = await Cart.create(DATA);
+        const result = await Cart.create(data);
         return res.status(200).json(result);
       }
       case REQ_METHOD.PATCH: {
-        // const result = await Cart.create(DATA);
+        const result = await Cart.create(data);
         return res.status(200).json(null);
       }
 

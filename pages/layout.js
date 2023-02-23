@@ -97,6 +97,7 @@ function CartModal() {
 }
 
 export default function layout({ children }) {
+  return <><div className="pt-20" /><main>{children}</main></>
   return (
     <>
       {/* CART POPUP */}

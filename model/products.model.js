@@ -1,42 +1,40 @@
-import { model, models, Schema } from "mongoose";
+import mongoose, { models } from "mongoose";
 
-const productsSchema = new Schema({
-  title: String,
-  desc:{
-    type:String,
-    minLength:10
-  },
-  price: {
-    type: Number,
-    require: true,
-    default: 1,
-  },
-  stock: {
-    type: Number,
-    require: true,
-    default: 10,
-  },
-  discount: {
-    type: Number,
-    require: true,
-    default: 0,
-  },
-  images: [{
-    type: String,
-    default: [],
-  }],
-  rating: {
-    count: {
-      type: Number,
-      default: 0,
+const productsSchema = new mongoose.Schema({
+    brand: {
+        type: mongoose.Types.ObjectId,
+        ref: 'brand'
     },
-    view: {
-      type: Number,
-      default: 0,
+    model: {
+        type: mongoose.Types.ObjectId,
+        ref: 'model'
     },
-  },
+    price: {
+        type: Number,
+        required: true
+    },
+    features: [String],
+    description: {
+        type: String,
+        required: true
+    },
+    colors: [{
+        type: String,
+        required: true
+    }],
+    images: [{
+        type: String,
+        required: true
+    }],
+    stock: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    rating: {
+        value: { type: Number, min: 0 },
+        count: { type: Number, min: 0 },
+    }
 });
 
-
-const Products = models.products || model("products",productsSchema);
-export default Products;
+module.exports = models.products || mongoose.model("products", productsSchema);

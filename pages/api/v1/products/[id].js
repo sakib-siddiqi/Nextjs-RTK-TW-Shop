@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     await connectDB();
     switch (METHOD) {
       case REQ_METHOD.GET: {
-        const result = await getProducts(ID);
+        const result = await getProducts({_id:ID});
         return res.status(200).send(result);
       }
 

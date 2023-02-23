@@ -2,20 +2,19 @@ import { REQ_METHOD } from "../../../../const";
 import { createProduct, getProducts } from "../../../../services/products.services";
 import connectDB from "../../../../utils/connectDB";
 export default async function handler(req, res) {
-  const METHOD = req.method;
-  console.log(req.body);
+  const {method:METHOD,body:data,query}=req;
   try {
     await connectDB();
     switch (METHOD) {
       /** GET */
       case REQ_METHOD.GET: {
-        const result = await getProducts();
+        const result = await getProducts({query});
         return res.status(200).json(result);
       }
       
       /** POST */
       case REQ_METHOD.POST: {
-        const result = await createProduct(req.body);
+        const result = await createProduct(data);
         return res.status(200).json(result);
       }
 
