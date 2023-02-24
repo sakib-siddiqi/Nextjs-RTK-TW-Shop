@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector } from "react-redux";
+import { BASE_API_ROUTE } from "../const";
 import CART_SLICE from "../redux/slices/cart.slice";
 
 const PORTFOLIO = "https://sakib-siddiqi.netlify.app/";
@@ -97,103 +98,14 @@ function CartModal() {
 }
 
 export default function layout({ children }) {
-  return <><div className="pt-20" /><main>{children}</main></>
   return (
     <>
-      {/* CART POPUP */}
-      <header className="bg-white bg-blend-saturation backdrop-saturate-150 backdrop-blur-xl sticky w-full z-50">
-        <div className="navbar container">
-          <div className="navbar-start">
-            <div className="dropdown">
-              <label tabIndex={0} className="btn btn-ghost btn-circle">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h7"
-                  />
-                </svg>
-              </label>
-              <ul
-                tabIndex={0}
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 w-52 rounded-md"
-              >
-                <li className="rounded-sm">
-                  <Link href="/">Home</Link>
-                </li>
-                <li className="rounded-sm">
-                  <Link href="/products">Products</Link>
-                </li>
-                <li className="rounded-sm">
-                  <Link href="/shop">Shop</Link>
-                </li>
-                <li className="rounded-sm">
-                  <Link href="/dashboard">Dashboard</Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="navbar-center">
-            <Link href={"/"} className="normal-case text-xl">
-              <img
-                src="//dot-shop.vercel.app/dot-logo.svg"
-                alt="Dot Shop"
-                className="max-w-[100px]"
-              />
-            </Link>
-          </div>
-          <div className="navbar-end">
-            <button className="btn btn-ghost btn-circle">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </button>
-            <button className="btn btn-ghost btn-circle">
-              <label htmlFor="cart-modal" className="indicator">
-                <AiOutlineShoppingCart size={24} />
-                <span className="badge badge-xs badge-primary indicator-item"></span>
-              </label>
-            </button>
-          </div>
+      <header className="py-2">
+        <div className="container">
+            <img src={BASE_API_ROUTE+"head-beat.svg"} alt="Head Beat" className="w-full max-w-[160px]" />
         </div>
       </header>
-
-      {/* MAIN */}
       <main>{children}</main>
-      <footer className="py-3 border-t-2 border-dashed border-slate-300 text-center">
-        <div className="container">
-          <p className="font-medium text-xl font-mono text-slate-900 tracking-wider">
-            👋 Developed by
-            <a
-              href={PORTFOLIO}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline decoration-wavy hover:decoration-double underline-offset-4 decoration-slate-700 ml-2"
-            >
-              @sakib
-            </a>
-          </p>
-        </div>
-      </footer>
-      <CartModal />
     </>
   );
 }
