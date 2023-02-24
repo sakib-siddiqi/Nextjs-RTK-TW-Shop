@@ -7,9 +7,8 @@ let URL =
 
 const connectDB = async () => {
   // Use new db connection
-  console.log("🎁 DATABSE URL 🎁 ---> : ", URL);
   mongoose.set("strictQuery", false);
-  return await mongoose.connect("mongodb://localhost:27017/DOT-shop");
+  return await mongoose.connect(URL);
 };
 
 export default connectDB;
