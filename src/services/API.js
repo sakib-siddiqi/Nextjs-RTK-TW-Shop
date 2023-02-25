@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_API_ROUTE } from "../const";
+import { DOMAIN } from "../src/utils/const";
 
 async function response(callback) {
   const { data } = await callback();
@@ -7,7 +7,7 @@ async function response(callback) {
 }
 
 class APIClass {
-  root = BASE_API_ROUTE + "/api/v1";
+  root = DOMAIN + "/api/v1";
   url(route) {
     return `${this.root}/${route}`;
   }

@@ -4,8 +4,8 @@ import Router from "next/router";
 import nProgress from "nprogress";
 import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
-import store from "../redux/store";
-import "../styles/globals.css";
+import store from "../src/redux/store";
+import "../src/styles/globals.css";
 import Layout from "./layout";
 
 function Loading() {

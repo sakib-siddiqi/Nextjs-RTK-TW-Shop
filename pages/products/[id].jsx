@@ -9,7 +9,7 @@ import { MdDownload, MdPeopleAlt } from "react-icons/md";
 import { RiShoppingBagFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import watch_photo from "../../assets/images/watch-photoshoot.jpg";
-import { BASE_API_ROUTE } from "../../const";
+import { DOMAIN } from "../../src/utils/const";
 import { add_to_cart } from "../../redux/slices/cart.slice";
 import { numberWithCommas } from "../../tools";
 
@@ -18,7 +18,7 @@ export async function getServerSideProps(context) {
   if (!id) {
     throw new Error(`ID is invalid ${id}`);
   }
-  const URL = `${BASE_API_ROUTE}/api/v1/products/${id}`;
+  const URL = `${DOMAIN}/api/v1/products/${id}`;
   try {
     const { data } = await axios.get(URL);
     return { props: { data } };

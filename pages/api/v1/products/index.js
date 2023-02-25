@@ -1,6 +1,6 @@
-import { REQ_METHOD } from "../../../../const";
-import { createProduct, getProducts } from "../../../../services/products.services";
-import connectDB from "../../../../utils/connectDB";
+import { REQ_METHOD } from "../../../../src/utils/const";
+import { createProduct, getProducts } from "../../../../src/services/products.services";
+import connectDB from "../../../../src/utils/connectDB";
 export default async function handler(req, res) {
   const {method:METHOD,body:data,query}=req;
   try {

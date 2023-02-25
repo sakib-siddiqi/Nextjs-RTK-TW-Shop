@@ -3,11 +3,11 @@ import Image from "next/image";
 import React from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { BASE_API_ROUTE } from "../../const";
+import { DOMAIN } from "../../src/utils/const";
 import { add_to_cart } from "../../redux/slices/cart.slice";
 
 export async function getStaticPaths() {
-  const URL = `${BASE_API_ROUTE}/api/v1/products`;
+  const URL = `${DOMAIN}/api/v1/products`;
   try {
     const { data } = await axios.get(URL);
     return {
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const id = context.params.id;
-  const URL = `${BASE_API_ROUTE}/api/v1/products/${id}`;
+  const URL = `${DOMAIN}/api/v1/products/${id}`;
   try {
     const { data } = await axios.get(URL);
     return { props: { data } };

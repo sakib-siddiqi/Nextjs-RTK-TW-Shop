@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.7",
+    "@headlessui/react": "^1.7.12",
     "@headlessui/tailwindcss": "^0.1.2",
     "@next/font": "^13.1.0",
     "@reduxjs/toolkit": "^1.9.1",

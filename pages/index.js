@@ -1,7 +1,7 @@
 import Head from "next/head";
-import Banner from "../components/Home/Banner";
-import ProductGrid from "../components/product/ProductGrid";
-import { BASE_API_ROUTE } from "../const";
+import Banner from "../src/components/Home/Banner";
+import ProductGrid from "../src/components/product/ProductGrid";
+import { DOMAIN } from "../src/utils/const";
 import withLayout from "./layout.manager";
 
 const demo = {
@@ -64,7 +64,7 @@ export default function Home({ data = [], error = "" }) {
 }
 
 export async function getServerSideProps() {
-  let URL = `${BASE_API_ROUTE}/api/v1/products`;
+  let URL = `${DOMAIN}/api/v1/products`;
   let props = { data: [], error: "", url: URL };
   try {
     let data = await (await fetch(URL)).json();

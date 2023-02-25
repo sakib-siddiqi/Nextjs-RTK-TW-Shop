@@ -1,10 +1,9 @@
-import axios from "axios";
 import React from "react";
-import ProductGrid from "../../components/product/ProductGrid";
-import { BASE_API_ROUTE } from "../../const";
+import ProductGrid from "../../src/components/product/ProductGrid";
+import { DOMAIN } from "../../src/utils/const";
 
 export async function getStaticProps() {
-  let URL = `${BASE_API_ROUTE}/api/v1/products`;
+  let URL = `${DOMAIN}/api/v1/products`;
   let props = { data: [], error: "", url: URL };
   try {
     let data = await (await fetch(URL)).json();

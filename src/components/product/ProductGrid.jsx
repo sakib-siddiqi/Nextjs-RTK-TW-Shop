@@ -23,8 +23,8 @@ export function ProductCard({ product = {} }) {
         setSrc(product.images[0]);
       }}
     >
-      <button className="absolute top-2 right-2 inline-flex justify-center items-center border-2 border-slate-200 text-rose-500 p-2 rounded-full text-lg z-50">
-        <BsSuitHeartFill />
+      <button className="absolute group/heart-btn top-2 right-2 inline-flex justify-center items-center border-2 border-slate-200 hover:border-rose-300 duration-300 text-rose-500 p-2 rounded-full text-lg z-50">
+        <BsSuitHeartFill className="group-hover/heart-btn:animate-bounce" />
       </button>
       <Link href={`/products/${product?._id}`} className="block">
         <div className="py-3 relative max-h-60">

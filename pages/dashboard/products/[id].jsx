@@ -1,4 +1,4 @@
-import Form from "../../../components/Dashboard/products/Form";
+import Form from "../../../src/components/Dashboard/products/Form";
 import API from "../../../services/API";
 import withLayout, { LAYOUT_TYPES } from "../../layout.manager";
 

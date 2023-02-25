@@ -1,4 +1,4 @@
-import { REQ_METHOD } from "../../../../const";
+import { REQ_METHOD } from "../../../../src/utils/const";
 import Cart from "../../../../model/cart.model";
 import { getCart } from "../../../../services/cart.services";
 

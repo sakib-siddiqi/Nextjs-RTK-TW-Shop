@@ -1,4 +1,4 @@
-import { REQ_METHOD } from "../../../../const";
+import { REQ_METHOD } from "../../../../src/utils/const";
 
 export default function offers(req, res) {
     const METHOD = req.method;

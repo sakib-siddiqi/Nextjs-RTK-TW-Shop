@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "../../../components/Dashboard/products/Form";
+import Form from "../../../scr/components/Dashboard/products/Form";
 import withLayout, { LAYOUT_TYPES } from "../../layout.manager";
 
 
