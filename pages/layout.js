@@ -30,42 +30,68 @@ function Header() {
             onClick={onToggle}
           />
           <ul
-            className={`flex flex-wrap flex-col md:flex-row md:items-center p-2 md:p-0 gap-3 font-semibold text-slate-600 md:ml-4 fixed md:relative top-0 left-0 h-screen md:h-auto w-11/12 md:w-auto overflow-auto md:overflow-visible bg-slate-800 md:bg-transparent max-w-xs md:max-w-none duration-200 ${
+            className={`flex md:flex-wrap flex-col md:flex-row md:items-center p-2 md:p-0 gap-1 md:gap-3 font-semibold text-slate-600 md:ml-4 fixed md:relative top-0 left-0 h-screen md:h-auto w-11/12 md:w-auto overflow-auto md:overflow-visible bg-slate-800 md:bg-transparent max-w-xs md:max-w-none duration-200 ${
               show ? "translate-x-0" : "-translate-x-full"
             } md:translate-x-0`}
           >
             <li>
-              <MenuDropdown
-                menu={
-                  <span className="block py-2 cursor-pointer">
-                    Categories <BiDownArrow className="inline-block text-sm" />
-                  </span>
-                }
-                dropdownClass="w-full md:w-fit rounded-[4px] bg-slate-800 p-0 min-w-[150px] max-w-xs bg-slate-600/10 md:bg-slate-800 shadow-lg shadow-slate-900/50"
-                subMenu={["Sakib Siddiqi Supto","Hello", "sami","Hello", "sami","Hello", "sami","Hello", "sami","Hello", "sami","Hello", "sami","Hello", "sami","Hello", "sami","Hello", "sami","Hello", "sami","Hello", "sami","Hello", "sami"]}
-                renderChildren={(item) => (
-                  <Link
-                    href={"/"}
-                    className="block py-2 px-4 hover:bg-white/10 whitespace-nowrap"
-                  >
-                    {item}
-                  </Link>
-                )}
-              />
+              <div className="relative group">
+                <MenuDropdown
+                  menu={(toggler) => (
+                    <span
+                      onClick={toggler}
+                      className="block p-2 cursor-pointer text-white/80 md:text-slate-800  hover:text-white md:hover:text-slate-900 bg-transparent hover:bg-white/10 rounded-md"
+                    >
+                      Categories{" "}
+                      <BiDownArrow className="inline-block text-sm" />
+                    </span>
+                  )}
+                  dropdownClass=" md:opacity-0 md:invisible md:top-[130%] md:group-hover:top-full md:group-hover:visible md:group-hover:opacity-100 w-full md:w-fit rounded-[4px] bg-slate-800 p-0 min-w-[150px] max-w-xs bg-white/5 md:bg-slate-800 shadow-lg shadow-slate-900/50 duration-300"
+                  subMenu={[
+                    "Sakib Siddiqi Supto",
+                    "Hello",
+                    "sami",
+                    "Hello",
+                    "sami",
+                    "Hello",
+                    "sami",
+                    "Hello",
+                    "sami",
+                    "Hello",
+                    "sami",
+                    "Hello",
+                    "sami",
+                    "Hello",
+                    "sami",
+                    "Hello",
+                    "sami",
+                    "Hello",
+                    "sami",
+                    "Hello",
+                    "sami",
+                    "Hello",
+                    "sami",
+                    "Hello",
+                    "sami",
+                  ]}
+                  renderChildren={(item) => (
+                    <Link
+                      href={"/"}
+                      className="block py-2 px-4 text-white/80 hover:text-white hover:bg-white/10 whitespace-nowrap"
+                    >
+                      {item}
+                    </Link>
+                  )}
+                />
+              </div>
             </li>
             <li>
-              <Link
-                href="/"
-                className="block md:inline-block p-2 hover:text-white hover:bg-indigo-50/10 duration-200 rounded-md "
-              >
+              <Link href="/" className="nav-menu-link">
                 Deals
               </Link>
             </li>
             <li>
-              <Link
-                href="/"
-                className="block md:inline-block p-2 hover:text-white hover:bg-indigo-50/10 duration-200 rounded-md "
-              >
+              <Link href="/" className="nav-menu-link">
                 Offers
               </Link>
             </li>
