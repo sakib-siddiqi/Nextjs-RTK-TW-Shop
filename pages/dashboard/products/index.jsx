@@ -5,7 +5,7 @@ import React from "react";
 import { BiAddToQueue } from "react-icons/bi";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
-import API from "../../../services/API";
+import API from "../../../src/services/API";
 import withLayout, { LAYOUT_TYPES } from "../../layout.manager";
 
 export default function index() {

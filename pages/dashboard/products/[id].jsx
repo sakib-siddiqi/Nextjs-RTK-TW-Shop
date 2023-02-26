@@ -1,5 +1,5 @@
 import Form from "../../../src/components/Dashboard/products/Form";
-import API from "../../../services/API";
+import API from "../../../src/services/API";
 import withLayout, { LAYOUT_TYPES } from "../../layout.manager";
 
 export async function getServerSideProps(context) {

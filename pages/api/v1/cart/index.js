@@ -1,6 +1,6 @@
+import Cart from "../../../../src/model/cart.model";
+import { getCart } from "../../../../src/services/cart.services";
 import { REQ_METHOD } from "../../../../src/utils/const";
-import Cart from "../../../../model/cart.model";
-import { getCart } from "../../../../services/cart.services";
 
 export default async function cart_handler(req, res) {
   try {

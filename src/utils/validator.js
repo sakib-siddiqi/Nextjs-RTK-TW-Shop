@@ -1,4 +1,4 @@
-import { REGEX } from "../const";
+import { REGEX } from "./const";
 
 export function isEmail(email) {
   return email && REGEX.EMAIL.test(email);

@@ -8,10 +8,10 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import { MdDownload, MdPeopleAlt } from "react-icons/md";
 import { RiShoppingBagFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-import watch_photo from "../../assets/images/watch-photoshoot.jpg";
+import watch_photo from "../../src/assets/images/watch-photoshoot.jpg";
+import { add_to_cart } from "../../src/redux/slices/cart.slice";
 import { DOMAIN } from "../../src/utils/const";
-import { add_to_cart } from "../../redux/slices/cart.slice";
-import { numberWithCommas } from "../../tools";
+import { numberWithCommas } from "../../src/utils/tools";
 
 export async function getServerSideProps(context) {
   const id = context?.params?.id;

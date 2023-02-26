@@ -1,4 +1,4 @@
-import User from "../../../../model/user.model";
+import User from "../../../../src/model/user.model";
 
 export default async function signup(req, res) {
   try {

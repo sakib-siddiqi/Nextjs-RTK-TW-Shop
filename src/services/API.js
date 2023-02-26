@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DOMAIN } from "../src/utils/const";
+import { DOMAIN } from "../utils/const";
 
 async function response(callback) {
   const { data } = await callback();

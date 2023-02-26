@@ -4,7 +4,7 @@ import React from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { DOMAIN } from "../../src/utils/const";
-import { add_to_cart } from "../../redux/slices/cart.slice";
+import { add_to_cart } from "../../src/redux/slices/cart.slice";
 
 export async function getStaticPaths() {
   const URL = `${DOMAIN}/api/v1/products`;

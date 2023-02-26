@@ -1,10 +1,10 @@
-import { REQ_METHOD } from "../../../../src/utils/const";
 import {
   deleteProduct,
   getProducts,
-  updateProduct,
+  updateProduct
 } from "../../../../src/services/products.services";
-import connectDB from "../../../../utils/connectDB";
+import { REQ_METHOD } from "../../../../src/utils/const";
+import connectDB from "../../../../src/utils/connectDB";
 
 /**
  *

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import ProductGrid from "../../scr/components/product/ProductGrid";
+import ProductGrid from "../../src/components/product/ProductGrid";
 import { DOMAIN } from "../../src/utils/const";
 
 export async function getServerSideProps() {
