@@ -33,8 +33,7 @@
 
   /* INPUT FILED */
   select {
-    @apply cursor-pointer rounded-full border-2 border-slate-300 bg-slate-100 
-    py-1 px-2 tracking-wide outline-0 transition-all duration-200 hover:bg-slate-200 md:font-semibold md:text-slate-600 md:hover:text-slate-900;
+    @apply cursor-pointer text-xs font-semibold rounded-md bg-indigo-600 text-white py-2 px-3 tracking-wide outline-0 transition-all duration-200 hover:bg-indigo-500 md:font-semibold;
   }
   label {
     @apply cursor-pointer;

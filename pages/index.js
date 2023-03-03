@@ -1,4 +1,6 @@
 import Head from "next/head";
+import { AiOutlineSortAscending } from "react-icons/ai";
+import Dropdown from "../src/components/Helper/Dropdown";
 import Banner from "../src/components/Home/Banner";
 import ProductGrid from "../src/components/product/ProductGrid";
 import { DOMAIN } from "../src/utils/const";
@@ -18,7 +20,7 @@ export default function Home({ data = [], error = "" }) {
   data = [];
   if (error)
     return (
-      <h1 className="text-4xl font-bold font-mono text-indigo-800">{error}</h1>
+      <h1 className="font-mono text-4xl font-bold text-indigo-800">{error}</h1>
     );
   return (
     <>
@@ -33,30 +35,37 @@ export default function Home({ data = [], error = "" }) {
         {/* PRODUCT GIRDS */}
         <section className="py-16">
           <div className="container flex flex-row items-center">
-            <div className=" flex flex-row overflow-auto flex-nowrap gap-3 flex-grow py-1">
-              <select name="model">
-                <option value="">Model</option>
-                <option value="model-1">Model 1</option>
+            <div className="flex flex-grow flex-row flex-nowrap gap-2 overflow-auto py-1">
+              <select name="name">
+                <option value="">HELLo</option>
               </select>
-              <select name="brand">
-                <option value="">Brand</option>
-                <option value="model-1">Model 1</option>
+              <select name="name">
+                <option value="">HELLo</option>
               </select>
-              <select name="color">
-                <option value="">Color</option>
-                <option value="model-1">Model 1</option>
+              <select name="name">
+                <option value="">HELLo</option>
               </select>
-              <select name="color">
-                <option value="">Material</option>
-                <option value="model-1">Model 1</option>
+              <select name="name">
+                <option value="">HELLo</option>
               </select>
             </div>
-            <select name="sort">
-              <option value="">Sort</option>
-              <option value="">Sort</option>
-            </select>
+            <Dropdown
+              buttonClass="px-3 pr-3 py-2"
+              from="right-0"
+              title={
+                <>
+                  <AiOutlineSortAscending className="inline-block" /> Sort
+                </>
+              }
+              menuClass=""
+              menu={["A-Z", "Z-A", "Low Price", "High Price"]}
+            />
           </div>
-          <ProductGrid className="py-5" products={[demo, demo,demo,demo,demo,demo]} error={error} />
+          <ProductGrid
+            className="py-5"
+            products={[demo, demo, demo, demo, demo, demo]}
+            error={error}
+          />
         </section>
       </>
     </>

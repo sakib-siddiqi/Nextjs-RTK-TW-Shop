@@ -23,10 +23,10 @@ export function ProductCard({ product = {} }) {
         setSrc(product.images[0]);
       }}
     >
-      <button className="absolute group/heart-btn top-2 right-2 inline-flex justify-center items-center border-2 border-slate-200 hover:border-rose-300 duration-300 text-rose-500 p-2 rounded-full text-lg z-50">
+      <button className="absolute group/heart-btn top-2 right-2 inline-flex justify-center items-center border-2 border-slate-200 hover:border-rose-300 duration-300 text-rose-500 p-2 rounded-full text-lg z-10">
         <BsSuitHeartFill className="group-hover/heart-btn:animate-bounce" />
       </button>
-      <Link href={`/products/${product?._id}`} className="block">
+      <Link href={`/products/${product?._id}`} className="block z-0">
         <div className="py-3 relative max-h-60">
           <Image
             src={product.images[0]}
@@ -40,7 +40,7 @@ export function ProductCard({ product = {} }) {
             alt={product.title}
             width={300}
             height={300}
-            className="w-full z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain object-center max-h-52 aspect-square mb-2 opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-500"
+            className="w-full z-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain object-center max-h-52 aspect-square mb-2 opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-500"
           />
         </div>
 
