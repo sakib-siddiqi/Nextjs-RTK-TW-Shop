@@ -10,8 +10,7 @@ export const DEMO_PRODUCT = {
   title: "Headphone gamer Version",
   rating: { value: 3.9, count: 10 },
   desc: "Easily transfer your Skype for Business and Lync pc calls to your smartphone using â€œJabra Intelligent call transfer (JICT).",
-  images: [
-    "https://www.bhphotovideo.com/images/images500x500/philips_tak4206bl_00_k4206_kids_wireless_on_ear_1689932.jpg",
+  images: ["https://www.bhphotovideo.com/images/images500x500/philips_tak4206bl_00_k4206_kids_wireless_on_ear_1689932.jpg",
     "https://m.media-amazon.com/images/I/51WPZWeeafS._AC_SX569_.jpg",
   ],
 };

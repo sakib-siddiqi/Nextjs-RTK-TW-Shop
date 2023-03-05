@@ -9,12 +9,15 @@ import API from "../../../src/services/API";
 import withLayout, { LAYOUT_TYPES } from "../../layout.manager";
 
 export default function index() {
-  const { data, isFetching, error } = useQuery({
+  const {
+    data: response,
+    isFetching,
+    error,
+  } = useQuery({
     queryKey: ["products"],
     queryFn: () => API.products.get(),
   });
-  console.log(data);
-
+  const { data } = response || {};
   async function deleteProduct(id) {
     const confirm = window.confirm("Are you sure?");
     const result = confirm ? await API.products.delete(id) : null;
@@ -29,8 +32,8 @@ export default function index() {
     UI = <h1>{error}</h1>;
   }
   UI = (
-    <div className="overflow-x-auto mb-2">
-      <table className="table table-zebra w-full">
+    <div className="mb-2 overflow-x-auto">
+      <table className="table-zebra table w-full">
         <thead>
           <tr>
             <th></th>
@@ -47,11 +50,11 @@ export default function index() {
           {data?.map((product, index) => (
             <tr className="text-sm" key={index}>
               <td className="px-2 py-1">{index + 1}</td>
-              <td className="px-2 py-1 max-w-sm min-w-[300px] whitespace-normal">
+              <td className="min-w-[300px] max-w-sm whitespace-normal px-2 py-1">
                 <img
                   src={product?.images?.[0]}
                   alt=""
-                  className="h-10 w-10 rounded-sm inline-block"
+                  className="inline-block h-10 w-10 rounded-sm"
                 />{" "}
                 {product?.title}
               </td>
@@ -70,18 +73,18 @@ export default function index() {
               <td className="px-2 py-1">
                 {product?.rating?.value}/{product?.rating?.count}
               </td>
-              <td className="px-2 py-1 max-w-xs min-w-[250px] whitespace-normal">
+              <td className="min-w-[250px] max-w-xs whitespace-normal px-2 py-1">
                 {product?.keywords}
               </td>
               <td className="px-2 py-1">
                 <Link
                   href={"/dashboard/products/" + product._id}
-                  className="inline-flex justify-center items-center p-2 text-xl mx-1 rounded-md bg-indigo-500 hover:bg-indigo-700 text-white"
+                  className="mx-1 inline-flex items-center justify-center rounded-md bg-indigo-500 p-2 text-xl text-white hover:bg-indigo-700"
                 >
                   <CiEdit className="inline" />
                 </Link>
                 <button
-                  className="p-2 text-xl mx-1 rounded-md bg-rose-500 hover:bg-rose-700 text-white"
+                  className="mx-1 rounded-md bg-rose-500 p-2 text-xl text-white hover:bg-rose-700"
                   onClick={() => deleteProduct(product._id)}
                 >
                   <MdDeleteOutline />
@@ -101,11 +104,11 @@ export default function index() {
       </Head>
       <section>
         {/* OVER VIEW  */}
-        <div className="flex justify-between items-center gap-2  my-4">
+        <div className="my-4 flex items-center justify-between  gap-2">
           <h1 className="text-2xl font-semibold tracking-wider">Products</h1>
           <Link
             href={"/dashboard/products/add"}
-            className="px-3 py-2 text-sm rounded-md bg-indigo-600 hover:bg-indigo-800 text-white font-semibold tracking-wide inline-flex justify-center items-center"
+            className="inline-flex items-center justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold tracking-wide text-white hover:bg-indigo-800"
           >
             <span className="mr-2 ">Add </span>
             <BiAddToQueue className="inline-block" />

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { RxCross1, RxHamburgerMenu } from "react-icons/rx";
 
@@ -13,6 +14,11 @@ const MENU = [
     icon: null,
     href: "/dashboard/orders",
   },
+  {
+    name: "Brands",
+    icon: null,
+    href: "/dashboard/brands",
+  },
 ];
 
 const Toggler = ({ icon, toggleSidebar }) => (
@@ -24,6 +30,7 @@ const Toggler = ({ icon, toggleSidebar }) => (
   </button>
 );
 function Header({ open, toggleSidebar }) {
+  const {pathname}=useRouter();
   return (
     <aside
       className={`min-w-[260px] fixed top-0 left-0 z-50 shadow-2xl shadow-indigo-900/60 lg:relative col-span-2 bg-gradient-to-tr from-indigo-600 to-purple-600 p-2 rounded-md duration-300 h-[calc(100%_-_18px)] lg:h-auto ${
@@ -40,7 +47,9 @@ function Header({ open, toggleSidebar }) {
           <Link
             key={index}
             href={menu.href}
-            className="block px-3 py-2 bg-indigo-100/5 hover:bg-indigo-100/20 focus:bg-indigo-100/25 mb-2 font-semibold rounded-md text-indigo-50 tracking-wide border border-dashed border-indigo-300/10"
+            className={`block px-3 py-2 mb-2 font-semibold rounded-md tracking-wide border border-dashed focus:border-solid ${pathname.includes(menu.href)?
+              "border-indigo-50/80 bg-indigo-100 hover:bg-indigo-100 text-slate-800"
+              :"border-indigo-50/50  bg-indigo-100/5 hover:bg-indigo-100/20 text-indigo-50"}`}
           >
             {menu.name}
           </Link>
