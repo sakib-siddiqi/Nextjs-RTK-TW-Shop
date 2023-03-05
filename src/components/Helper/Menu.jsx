@@ -4,7 +4,7 @@ export function MenuDropdown({
   menu = (toggler) => "Dropdown",
   dropdownClass = "",
   subMenu = [],
-  renderChildren = (item) => {},
+  renderChildren = (item,key) => {},
 }) {
   const [show, setShow] = useState(false);
 

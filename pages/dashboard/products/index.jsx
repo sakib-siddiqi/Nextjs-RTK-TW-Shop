@@ -45,7 +45,7 @@ export default function index() {
         </thead>
         <tbody>
           {data?.map((product, index) => (
-            <tr className="text-sm">
+            <tr className="text-sm" key={index}>
               <td className="px-2 py-1">{index + 1}</td>
               <td className="px-2 py-1 max-w-sm min-w-[300px] whitespace-normal">
                 <img

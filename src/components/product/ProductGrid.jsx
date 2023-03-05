@@ -57,7 +57,6 @@ export function ProductCard({ product = {} }) {
       <div className="flex flex-wrap justify-between items-center gap-2">
         <span className="text-lg font-bold tracking-wide">$100</span>
         <span className="text-sm font-semibold inline-flex justify-center items-center text-slate-500">
-          {" "}
           <IoStarSharp className="text-orange-500 inline-block" />{" "}
           {product.rating.value}({product.rating.count})
         </span>

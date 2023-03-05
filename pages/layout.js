@@ -16,25 +16,27 @@ function Header() {
   }
   return (
     <>
-     {!show && <section className="bg-gradient-to-r from-purple-500 to-indigo-400 py-1 text-white">
-        <div className="container">
-          <p className="">
-            <b className="font-medium">40%</b> Discount offer is going on.{" "}
-          </p>
-        </div>
-      </section>}
+      {!show && (
+        <section className="bg-gradient-to-r from-purple-500 to-indigo-400 py-1 text-white">
+          <div className="container">
+            <p className="">
+              <b className="font-medium">40%</b> Discount offer is going on.{" "}
+            </p>
+          </div>
+        </section>
+      )}
       <header className="sticky top-0 z-[1000] bg-white/80 py-2 backdrop-blur-md backdrop-saturate-150">
         <div className="container flex flex-wrap gap-4">
-          <img
-            src={DOMAIN + "head-beat.png"}
-            alt="Head Beat"
-            className="w-full max-w-[160px]"
-          />
+          <Link href="/">
+            <img
+              src={DOMAIN + "head-beat.png"}
+              alt="Head Beat"
+              className="w-full max-w-[160px]"
+            />
+          </Link>
           <div className="flex flex-grow items-center justify-between gap-2">
             <div
-              className={`fixed top-0 left-0 h-screen w-full bg-slate-900/30 duration-200 md:hidden ${
-                !show && "hidden"
-              }`}
+              className={`fixed top-0 left-0 h-screen w-full bg-slate-900/30 duration-200 md:hidden ${!show && "hidden"}`}
               onClick={onToggle}
             />
             <ul
@@ -82,8 +84,9 @@ function Header() {
                       "Hello",
                       "sami",
                     ]}
-                    renderChildren={(item) => (
+                    renderChildren={(item,key) => (
                       <Link
+                        key={key}
                         href={"/"}
                         className="block whitespace-nowrap py-2 px-4 text-white/80 hover:bg-white/10 hover:text-white"
                       >
@@ -110,7 +113,7 @@ function Header() {
             >
               <RiMenu4Fill className="inline-block" />
             </button>
-            <ul className="hidden flex-row flex-wrap items-center gap-2 md:flex">
+            <div className="hidden flex-row flex-wrap items-center gap-2 md:flex">
               <form className="flex divide-x divide-slate-200 overflow-hidden rounded-md border border-slate-200 hover:border-slate-400 focus:border-slate-400 ">
                 <input
                   type="search"
@@ -129,16 +132,16 @@ function Header() {
                 <FaUser />
               </Link>
               <Link
-                href={"/auth/user"}
+                href={"cart"}
                 className="center relative rounded-md bg-slate-100 p-2 text-slate-800 "
               >
-                <span class="absolute top-0 right-0 flex h-3 w-3 translate-x-1/2  -translate-y-1/2">
-                  <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-gradient-to-r from-sky-400 to-indigo-500 opacity-75"></span>
-                  <span class="relative inline-flex h-3 w-3 rounded-full  bg-gradient-to-r from-sky-400 to-indigo-500"></span>
+                <span className="absolute top-0 right-0 flex h-3 w-3 translate-x-1/2  -translate-y-1/2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gradient-to-r from-sky-400 to-indigo-500 opacity-75"></span>
+                  <span className="relative inline-flex h-3 w-3 rounded-full  bg-gradient-to-r from-sky-400 to-indigo-500"></span>
                 </span>
                 <ImCart />
               </Link>
-            </ul>
+            </div>
           </div>
         </div>
       </header>

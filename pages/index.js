@@ -6,7 +6,7 @@ import ProductGrid from "../src/components/product/ProductGrid";
 import { DOMAIN } from "../src/utils/const";
 import withLayout from "./layout.manager";
 
-const demo = {
+export const DEMO_PRODUCT = {
   title: "Headphone gamer Version",
   rating: { value: 3.9, count: 10 },
   desc: "Easily transfer your Skype for Business and Lync pc calls to your smartphone using â€œJabra Intelligent call transfer (JICT).",
@@ -18,10 +18,10 @@ const demo = {
 
 export default function Home({ data = [], error = "" }) {
   data = [];
-  if (error)
-    return (
-      <h1 className="font-mono text-4xl font-bold text-indigo-800">{error}</h1>
-    );
+  // if (error)
+  //   return (
+  //     <h1 className="font-mono text-4xl font-bold text-indigo-800">{error}</h1>
+  //   );
   return (
     <>
       <Head>
@@ -63,7 +63,7 @@ export default function Home({ data = [], error = "" }) {
           </div>
           <ProductGrid
             className="py-5"
-            products={[demo, demo, demo, demo, demo, demo]}
+            products={[DEMO_PRODUCT, DEMO_PRODUCT, DEMO_PRODUCT, DEMO_PRODUCT, DEMO_PRODUCT, DEMO_PRODUCT]}
             error={error}
           />
         </section>
